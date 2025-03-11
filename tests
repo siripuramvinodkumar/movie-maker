@@ -1,0 +1,92 @@
+test_video_processing.py:
+"""
+test_video_processing.py
+
+Unit tests for the video processing module.
+"""
+
+import unittest
+from src.video_processing import cut_video, trim_video, merge_videos
+
+class TestVideoProcessing(unittest.TestCase):
+
+    def test_cut_video(self):
+        video_path = "path/to/video.mp4"
+        start_time = 10
+        end_time = 50
+        result = cut_video(video_path, start_time, end_time)
+        expected = "path/to/cut_video.mp4"
+        self.assertEqual(result, expected, "The cut video file path should match the expected output.")
+
+    def test_trim_video(self):
+        video_path = "path/to/video.mp4"
+        duration = 30
+        result = trim_video(video_path, duration)
+        expected = "path/to/trimmed_video.mp4"
+        self.assertEqual(result, expected, "The trimmed video file path should match the expected output.")
+
+    def test_merge_videos(self):
+        video_paths = ["path/to/video1.mp4", "path/to/video2.mp4"]
+        output_path = "path/to/merged_video.mp4"
+        result = merge_videos(video_paths, output_path)
+        self.assertEqual(result, output_path, "The merged video file path should match the expected output.")
+
+if __name__ == "__main__":
+    unittest.main()
+ test_audio_processing.py:
+"""
+test_audio_processing.py
+
+Unit tests for the audio processing module.
+"""
+
+import unittest
+from src.audio_processing import add_background_music, overlay_audio
+
+class TestAudioProcessing(unittest.TestCase):
+
+    def test_add_background_music(self):
+        video_path = "path/to/video.mp4"
+        music_path = "path/to/music.mp3"
+        output_path = "path/to/video_with_music.mp4"
+        result = add_background_music(video_path, music_path, output_path)
+        self.assertEqual(result, output_path, "The video file path with background music should match the expected output.")
+
+    def test_overlay_audio(self):
+        video_path = "path/to/video.mp4"
+        audio_path = "path/to/audio.mp3"
+        output_path = "path/to/video_with_overlayed_audio.mp4"
+        result = overlay_audio(video_path, audio_path, output_path)
+        self.assertEqual(result, output_path, "The video file path with overlayed audio should match the expected output.")
+
+if __name__ == "__main__":
+    unittest.main()
+ test_effects.py:
+"""
+test_effects.py
+
+Unit tests for the effects module.
+"""
+
+import unittest
+from src.effects import apply_filter, add_transition
+
+class TestEffects(unittest.TestCase):
+
+    def test_apply_filter(self):
+        video_path = "path/to/video.mp4"
+        filter_type = "grayscale"
+        result = apply_filter(video_path, filter_type)
+        expected = "path/to/filtered_video.mp4"
+        self.assertEqual(result, expected, "The filtered video file path should match the expected output.")
+
+    def test_add_transition(self):
+        video1_path = "path/to/video1.mp4"
+        video2_path = "path/to/video2.mp4"
+        transition_type = "fade"
+        output_path = "path/to/video_with_transition.mp4"
+        result = add_transition(video1_path, video2_path, transition_type, output_path)
+        self.assertEqual(result, output_path, "The video file path with the transition should match the expected output.")
+
+if __name__ == "__main__":
+    unittest.main()
